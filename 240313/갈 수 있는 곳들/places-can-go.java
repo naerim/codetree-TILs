@@ -14,7 +14,6 @@ public class Main {
     public static int n, k;
     public static boolean visited[][];
     public static int map[][];
-    public static Point startArr[];
     public static int dx[] = new int[]{0,1,0,-1};
     public static int dy[] = new int[]{1,0,-1,0};
     public static Queue<Point> queue = new LinkedList();
@@ -35,32 +34,30 @@ public class Main {
             }
         }
 
-        startArr = new Point[k];
         for(int i=0; i<k; i++) {
             int x = sc.nextInt();
             int y = sc.nextInt();
-            Point p = new Point(x, y);
-            queue.add(p);
-            startArr[i] = p;
+            queue.add(new Point(x, y));
         }
 
         int sum = 0;
 
         while(!queue.isEmpty()) {
             Point p = queue.poll();
-            visited[p.x][p.y] = true;
+            if(!visited[p.x][p.y]) {
+                visited[p.x][p.y] = true;
+                sum += 1;
 
-            for(int i=0; i<4; i++) {
-                int nx = p.x + dx[i];
-                int ny = p.y + dy[i];
-                if(nx>0 && nx<=n && ny>0 && ny<=n && map[nx][ny]==0 && !visited[nx][ny]) {
-                    queue.add(new Point(nx, ny));
-                    visited[nx][ny] = true;
-                    sum += 1;
+                for(int i=0; i<4; i++) {
+                    int nx = p.x + dx[i];
+                    int ny = p.y + dy[i];
+                    if(nx>0 && nx<=n && ny>0 && ny<=n && map[nx][ny]==0 && !visited[nx][ny]) {
+                        queue.add(new Point(nx, ny));
+                    }
                 }
             }
         }
 
-        System.out.print(sum+1);
+        System.out.print(sum);
     }
 }
