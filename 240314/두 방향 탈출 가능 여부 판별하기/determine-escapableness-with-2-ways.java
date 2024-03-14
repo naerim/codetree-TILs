@@ -34,7 +34,7 @@ public class Main {
     }
 
     public static void dfs(int x, int y) {
-        if(x==n && y==m) {
+        if(x==n-1 && y==m-1) {
             answer = 1;
             return;
         }
@@ -43,7 +43,7 @@ public class Main {
             int nx = x + dx[i];
             int ny = y + dy[i];
             if(nx>=0&&nx<n&&ny>=0&&ny<m&&arr[nx][ny]==1&&!visited[nx][ny]) {
-                visited[nx][ny] = true;
+                visited[x][y] = true;
                 dfs(nx, ny);
             }
         }
