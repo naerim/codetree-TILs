@@ -24,6 +24,7 @@ public class Main {
             arr[b][a] = 1;
         }
 
+        visited[1] = true;
         dfs(1);
 
         int sum = 0;
