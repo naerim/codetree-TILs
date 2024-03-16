@@ -24,7 +24,7 @@ public class Main {
             }
         }
 
-        answer_k = 0;
+        answer_k = 1;
         answer_count = 0;
         count = 0; //안전한 영역 갯수
         for(int k=1; k<=max; k++) {
